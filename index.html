@@ -219,14 +219,11 @@
                     <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
                         <span class="carousel-control-next-icon"></span>
                     </a>
-                    <div class="btn-group" id="carouselButton">
-                        <button class="btn btn-danger btn-sm" id="carousel-pause">
-                            <span class="fa fa-pause"></span>
-                        </button>
-                        <button class="btn btn-danger btn-sm" id="carousel-play">
-                            <span class="fa fa-play"></span>
-                        </button>
-                    </div>
+                    
+                    <button class="btn btn-danger btn-sm" id="carouselButton">
+                        <span class="fa fa-pause"></span>
+                    </button>
+                    
                 </div>
             </div>
         </div>
@@ -282,64 +279,6 @@
             </div>
         </div>
 
-        <!-- <div class="row row-content" id="reserve">
-            <div class=" offset-md-2 col-md-8 col-sm-8">
-                <div class="card">
-                    <h3 class="card-header bg-warning text-white">Reserve a Table</h3>
-                    <div class="card-body">
-                        <dl class="row">
-                            <dt class="col-md-2 col-form-label">Number of Guests</dt>
-                            <dd class="col-10">
-                                <div class="form-group row">
-                                    <div class="col-12 col-sm-9">
-                                        <input type="radio" class="form-check-label" id="numberp" name="numberp">
-                                        <label class="form-check-label" for="numberp">1</label>
-                                        &nbsp;
-                                        <input type="radio" class="form-check-label" id="numberp" name="numberp">
-                                        <label class="form-check-label" for="numberp">2</label>
-                                        &nbsp;
-                                        <input type="radio" class="form-check-label" id="numberp" name="numberp">
-                                        <label class="form-check-label" for="numberp">3</label>
-                                        &nbsp;
-                                        <input type="radio" class="form-check-label" id="numberp" name="numberp">
-                                        <label class="form-check-label" for="numberp">4</label>
-                                        &nbsp;
-                                        <input type="radio" class="form-check-label" id="numberp" name="numberp">
-                                        <label class="form-check-label" for="numberp">5</label>
-                                        &nbsp;
-                                        <input type="radio" class="form-check-label" id="numberp" name="numberp">
-                                        <label class="form-check-label" for="numberp">6</label>
-                                    </div>
-                                   
-                                </div>
-                            </dd>
-                            <dt class="col-md-2 col-form-label">Date and Time</dt>
-                            <dd class="col-10">
-                                <div class="form-group row">
-                                    <div class="col-md-3 ">
-                                        <input type="tel" class="form-control" id="areacode" name="areacode"
-                                        placeholder="Date">
-                                    </div>
-                                    <div class="col-md-3 ">
-                                        <input type="tel" class="form-control" id="telnum" name="telnum"
-                                        placeholder="Time">
-                                    </div>
-                                </div>
-                            </dd>
-                            
-                        </dl>
-                        <div class="form-group row">
-                            <div class="offset-md-2 col-md-10">
-                                <button type="submit" class="btn btn-primary">
-                                    Reserve
-                                </button>
-    
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
     </div>
 
     <footer class="footer">
@@ -395,11 +334,20 @@
     <script>
         $(document).ready(function(){
             $('#mycarousel').carousel({interval: 2000});
-            $('#carousel-pause').click(function(){
-                $('#mycarousel').carousel('pause');
-            });
-            $('#carousel-play').click(function(){
-                $('#mycarousel').carousel('cycle');
+            $('#carouselButton').click(function(){
+                if($('#carouselButton').children('span').hasClass('fa-pause')){
+                    $('#mycarousel').carousel('pause');
+                    $('#carouselButton').children('span').removeClass('fa-pause');
+                    $('#carouselButton').children('span').addClass('fa-play');
+                }
+                
+                else if($('#carouselButton').children('span').hasClass('fa-play')){
+                    $('#mycarousel').carousel('cycle');
+                    $('#carouselButton').children('span').removeClass('fa-play');
+                    $('#carouselButton').children('span').addClass('fa-pause');
+                }
+            
+                
             });
         });
     </script>
