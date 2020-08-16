@@ -88,15 +88,96 @@
                 <div class="col-12 col-sm align-self-center">
                     <div class="btn-group" role="group">
                         <a role="button" class="btn btn-block nav-link btn-warning px-5" 
-                        data-toggle="tooltip" data-html="true" 
-                        title="Or Call us at <br> <strong>+91-9520858831</strong>"
-                        data-placement="bottom"
-                        href="#reserve"> Reserve Table </a>
+                        data-toggle="modal" data-target="#reservemodal" > Reserve Table </a>
                     </div>
                 </div>
             </div>
         </div>
     </header>
+
+    <div id="reservemodal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg" role="content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Reserve a Table</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <!-- &times; -->
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <!-- <div class="form-row"> -->
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Number of Guets</label>
+                                <div class="col-sm-7">
+                                    <input type="radio" class="form-check-label" id="numberp" name="numberp">
+                                    <label class="form-check-label" for="numberp">1</label>
+                                    &nbsp;
+                                    <input type="radio" class="form-check-label" id="numberp" name="numberp">
+                                    <label class="form-check-label" for="numberp">2</label>
+                                    &nbsp;
+                                    <input type="radio" class="form-check-label" id="numberp" name="numberp">
+                                    <label class="form-check-label" for="numberp">3</label>
+                                    &nbsp;
+                                    <input type="radio" class="form-check-label" id="numberp" name="numberp">
+                                    <label class="form-check-label" for="numberp">4</label>
+                                    &nbsp;
+                                    <input type="radio" class="form-check-label" id="numberp" name="numberp">
+                                    <label class="form-check-label" for="numberp">5</label>
+                                    &nbsp;
+                                    <input type="radio" class="form-check-label" id="numberp" name="numberp">
+                                    <label class="form-check-label" for="numberp">6</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Section</label>
+                                <div class="col-md-8">
+                                    <div class="btn-group" role="group">
+                                        <input type="button" class="btn btn-success btn-sm active" value="Non-Smoking" name="section">
+                                        <input type="button" class="btn btn-danger btn-sm " value="Smoking" name="section">
+                                        
+                                    </div>
+                                </div>
+                                
+                                
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Date and Time</label>
+                                
+                                    <div class="col-md-4 ">
+                                        <input type="tel" class="form-control" id="areacode" name="areacode"
+                                        placeholder="Date">
+                                    </div>
+                                    <div class="col-md-4 ">
+                                        <input type="tel" class="form-control" id="telnum" name="telnum"
+                                        placeholder="Time">
+                                    </div>
+                                <!-- </div> -->
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="offset-md-2 col-md-10">
+                                    <button type="submit" class="btn btn-secondary" data-dismiss="modal">
+                                        Cancel
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">
+                                        Reserve
+                                    </button>
+                                </div>
+                            </div>
+
+
+                            
+                        <!-- </div> -->
+                        
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <div class="container">
         <div class="row row-content">
@@ -138,6 +219,14 @@
                     <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
                         <span class="carousel-control-next-icon"></span>
                     </a>
+                    <div class="btn-group" id="carouselButton">
+                        <button class="btn btn-danger btn-sm" id="carousel-pause">
+                            <span class="fa fa-pause"></span>
+                        </button>
+                        <button class="btn btn-danger btn-sm" id="carousel-play">
+                            <span class="fa fa-play"></span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -193,8 +282,7 @@
             </div>
         </div>
 
-        <div class="row row-content" id="reserve">
-            <!-- <div class="col-2"></div> -->
+        <!-- <div class="row row-content" id="reserve">
             <div class=" offset-md-2 col-md-8 col-sm-8">
                 <div class="card">
                     <h3 class="card-header bg-warning text-white">Reserve a Table</h3>
@@ -225,7 +313,6 @@
                                    
                                 </div>
                             </dd>
-                            <!-- <br> -->
                             <dt class="col-md-2 col-form-label">Date and Time</dt>
                             <dd class="col-10">
                                 <div class="form-group row">
@@ -252,8 +339,7 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-2"></div> -->
-        </div>
+        </div> -->
     </div>
 
     <footer class="footer">
@@ -301,9 +387,20 @@
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script>
+    <!-- <script>
         $(document).ready(function(){
             $('[data-toggle = "tooltip"]').tooltip();
+        });
+    </script> -->
+    <script>
+        $(document).ready(function(){
+            $('#mycarousel').carousel({interval: 2000});
+            $('#carousel-pause').click(function(){
+                $('#mycarousel').carousel('pause');
+            });
+            $('#carousel-play').click(function(){
+                $('#mycarousel').carousel('cycle');
+            });
         });
     </script>
 
